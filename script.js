@@ -19,10 +19,33 @@ function createTaskElement(text) {
     const newItem = document.createElement('div');
     newItem.className = 'item';
     newItem.draggable = true;
-    newItem.textContent = text;
+
+    const span = document.createElement('span');
+    span.className = 'item-text';
+    span.textContent = text;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.type = 'button';
+    deleteBtn.draggable = false;
+    deleteBtn.title = 'Delete task';
+    deleteBtn.textContent = '✕';
+    deleteBtn.addEventListener('click', deleteTask);
+
+    newItem.appendChild(span);
+    newItem.appendChild(deleteBtn);
+
     newItem.addEventListener('dragstart', dragStart);
     newItem.addEventListener('dragend', dragEnd);
     return newItem;
+}
+
+function deleteTask(e) {
+    e.stopPropagation();
+    const item = e.target.closest('.item');
+    if (!item) return;
+    item.remove();
+    saveTasks();
 }
 
 function saveTasks() {
@@ -31,7 +54,8 @@ function saveTasks() {
         const columnId = card.id;
         tasks[columnId] = [];
         card.querySelectorAll('.item').forEach(item => {
-            tasks[columnId].push(item.textContent);
+            const text = item.querySelector('.item-text')?.textContent || '';
+            if (text) tasks[columnId].push(text);
         });
     });
     localStorage.setItem('kanbanTasks', JSON.stringify(tasks));

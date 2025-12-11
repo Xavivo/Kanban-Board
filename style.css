@@ -53,10 +53,28 @@ h6 {
     padding: 10px;
     margin: 20px;
     cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.item:active {
-    cursor: grabbing;
+.item-text {
+    flex: 1;
+    margin-right: 8px;
+    word-break: break-word;
+}
+
+.delete-btn {
+    background-color: #E74C3C;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.delete-btn:hover {
+    background-color: #C0392B;
 }
 
 button {
