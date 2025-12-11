@@ -14,27 +14,27 @@
 <body>
     <h1>To-Do Kanban Board</h1>
     <h6>By Alberto Vázquez Monge</h6>
+    
+    <div class="input">
+        <input type="text" id="taskInput" placeholder="Enter a new task...">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+
     <div class="container">
         <div class="card" id="backLog">
                 <h2 class="title">Backlog</h2>
-                <div class="item">Task 1</div>
-                <div class="item">Task 2</div>
         </div>
         <div class="card" id="toDo">
                 <h2 class="title">To-Do</h2>
-                <div class="item">Task 1</div>
-                <div class="item">Task 2</div>
         </div>
         <div class="card" id="doing">
                 <h2 class="title">Doing</h2>
-                <div class="item">Task 1</div>
-                <div class="item">Task 2</div>
         </div>
         <div class="card" id="done">
                 <h2 class="title">Done</h2>
-                <div class="item">Task 1</div>
-                <div class="item">Task 2</div>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

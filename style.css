@@ -54,3 +54,37 @@ h6 {
     margin: 20px;
     cursor: grab;
 }
+
+.item:active {
+    cursor: grabbing;
+}
+
+button {
+    background-color: #5DADE2;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #3498DB;
+}
+
+.input {
+    text-align: center; 
+    margin: 20px;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
