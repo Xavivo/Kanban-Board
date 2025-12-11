@@ -1,6 +1,30 @@
+.orbitron-font {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+body {
+    background-color: #3291B6;
+    margin: 0;
+    padding: 0;
+}
+
 h1 {
     text-align: center;
-    
+    font-family: 'Irish Grover', cursive;
+    font-size: 80px;
+    color: white;
+}
+h6 {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: white;
 }
 
 .container {
@@ -9,9 +33,24 @@ h1 {
 }
 
 .card {
-    background-color: transparent;
-    border: 1px solid transparent;
+    background-color: #BB8ED0;
+    border: 2px solid black;
     padding: 20px;
     margin: 10px;
     width: 25%;
+}
+
+.title {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.item {
+    background-color: #E8DAEF;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+    cursor: grab;
 }
