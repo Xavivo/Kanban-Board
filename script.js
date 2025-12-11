@@ -8,15 +8,46 @@ function addTask() {
     }
     
     const backLog = document.getElementById('backLog');
+    const newItem = createTaskElement(taskText);
+    
+    backLog.appendChild(newItem);
+    saveTasks();
+    input.value = '';
+}
+
+function createTaskElement(text) {
     const newItem = document.createElement('div');
     newItem.className = 'item';
     newItem.draggable = true;
-    newItem.textContent = taskText;
+    newItem.textContent = text;
     newItem.addEventListener('dragstart', dragStart);
     newItem.addEventListener('dragend', dragEnd);
-    
-    backLog.appendChild(newItem);
-    input.value = '';
+    return newItem;
+}
+
+function saveTasks() {
+    const tasks = {};
+    document.querySelectorAll('.card').forEach(card => {
+        const columnId = card.id;
+        tasks[columnId] = [];
+        card.querySelectorAll('.item').forEach(item => {
+            tasks[columnId].push(item.textContent);
+        });
+    });
+    localStorage.setItem('kanbanTasks', JSON.stringify(tasks));
+}
+
+function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem('kanbanTasks'));
+    if (tasks) {
+        Object.keys(tasks).forEach(columnId => {
+            const card = document.getElementById(columnId);
+            tasks[columnId].forEach(taskText => {
+                const newItem = createTaskElement(taskText);
+                card.appendChild(newItem);
+            });
+        });
+    }
 }
 
 let draggedElement = null;
@@ -30,6 +61,7 @@ function dragStart(e) {
 function dragEnd(e) {
     e.target.style.opacity = '1';
     draggedElement = null;
+    saveTasks();
 }
 
 function dragOver(e) {
@@ -55,3 +87,6 @@ document.querySelectorAll('.item').forEach(item => {
     item.addEventListener('dragstart', dragStart);
     item.addEventListener('dragend', dragEnd);
 });
+
+// Load tasks on page load
+loadTasks();
